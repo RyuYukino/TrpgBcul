@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+　<meta charset="utf-8">
+　<title>TRPG_DL販売手数料（規約最終確認日：2/4）</title>
+<!　参考　https://csshtml.work/input-size/ >	
+
+<style>
+
+.val{
+    display: inline-block;
+    width: 100px;
+    padding: 0.5em;
+    border: 1.5px solid #999;
+    box-sizing: border-box;
+    font-size: 14px;
+    background: #f2f2f2;
+    margin: 0.5em 0;
+}
+
+.store{
+     background: #FFE4E1;}
+
+.vene{
+     background: #ffebcd;
+     font-weight: bold}
+
+
+</style>
+
+</meta>
+</head>
+
+<body>
+<script>
+//参考　https://ssilab.co.jp/blog/tech-blog/tech-blog-child/blog-html5-output
+//数への変換 https://www.pazru.net/js/number/3.html
+//ラウンド https://lab.syncer.jp/Web/JavaScript/Snippet/16/
+//output関数 http://honttoni.blog74.fc2.com/blog-entry-162.html?sp
+
+function vCal() {
+//数の定義
+ var num = parseFloat(document.cul.val.value);
+//Booth計算
+ var A1 = Math.ceil(num * 0.056)+22;
+ var A2 = Math.ceil(num*0.1);
+ var A3 = num-A1-A2;
+//Booth代入
+ document.cul.A1_t.value =A1;
+ document.cul.A2_t.value =A2;
+ document.cul.A3_t.value =A3;
+
+//TALTO計算
+ var B1 = Math.ceil(num * 0.05)+50;
+ var num2 = num - B1
+ var B2 = Math.ceil(num2*0.1);
+ var B3 = num-B1-B2;
+//TALTO代入
+ document.cul.B1_t.value =B1;
+ document.cul.B2_t.value =B2;
+ document.cul.B3_t.value =B3;
+
+//conos計算
+ var C1 = Math.ceil(num * 0.3);
+// var num2 = num - C1
+// var C2 = Math.ceil(num2*0.1);
+// var C3 = num-C1-C2;
+//conos代入
+ document.cul.C1_t.value =C1;
+// document.cul.C2_t.value =C2;
+// document.cul.C3_t.value =C3;
+
+}
+
+</script>
+
+<! // HTML>
+
+<form name="cul">
+○販売価格：<input type="number" class="val" name="val" onblur="vCal()"> 円　　<input type="button" value="計算" onclick="vCal()"><br/><br/>
+
+<table border="1">
+ <thead><tr align="center"><th></th><th class="store">BOOTH</th><th class="store">TALTO</th><th class="store">conos</th></tr></thead>
+ <tbody>
+  <tr align="right"><td align="center">ショップ手数料</td>
+	<td><output name="A1_t">0</output>円</td>
+	<td><output name="B1_t">0</output>円</td>
+	<td><output name="C1_t">0</output>円</td></tr>
+  <tr align="right"><td align="center">ライセンス料</td>
+	<td><output name="A2_t">0</output>円</td>
+	<td><output name="B2_t">0</output>円</td>
+	<td><output name="C2_t">?</output>円</td></tr>
+  <tr align="right"><td align="center" bgcolor="#ffebcd">利益</td>
+	<td class="vene"><output name="A3_t">0</output>円<br/>
+	<td class="vene"><output name="B3_t">0</output>円</td>
+	<td class="vene"><output name="C3_t">?</output>円</td></tr>
+ </tbody>
+</table>
+</form>
+※conosからのライセンス料は料率不明です。
+<br/><br/>
+エクセル版は<a href="" target="_blank">こちら</a>(フリーです)
+
+</body>
+</html>
+
